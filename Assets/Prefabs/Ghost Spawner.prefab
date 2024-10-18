@@ -48,6 +48,7 @@ MonoBehaviour:
   defaultSpawnFrequency: 5
   spawnPaddingX: 0.1
   spawnPaddingY: 0.1
-  changeInSpawnFrequency: 0.1
+  changeInSpawnFrequency: 0.25
+  minimumSpawnFrequency: 0.25
   changeDiffilcultyAfterSpawn: 3
   debug: 1
