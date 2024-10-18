@@ -271,14 +271,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Ghost Spawner
       objectReference: {fileID: 0}
-    - target: {fileID: 2821535901120784011, guid: c8dc2809747330b449d89383ded6871e, type: 3}
-      propertyPath: minimumSpawnFrequency
-      value: 0.25
-      objectReference: {fileID: 0}
-    - target: {fileID: 2821535901120784011, guid: c8dc2809747330b449d89383ded6871e, type: 3}
-      propertyPath: changeInSpawnFrequency
-      value: 0.25
-      objectReference: {fileID: 0}
     - target: {fileID: 8594488409376332962, guid: c8dc2809747330b449d89383ded6871e, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
