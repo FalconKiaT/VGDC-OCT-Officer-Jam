@@ -45,7 +45,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ghostPrefab: {fileID: 4494829325265969574, guid: 007084c5f4e361249b428fa0e3e3267d, type: 3}
-  defaultSpawnFrequency: 0.5
+  defaultSpawnFrequency: 5
   spawnPaddingX: 0.1
   spawnPaddingY: 0.1
+  changeInSpawnFrequency: 0.1
+  changeDiffilcultyAfterSpawn: 3
   debug: 1

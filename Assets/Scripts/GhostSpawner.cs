@@ -1,22 +1,34 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Xml.Serialization;
 using UnityEngine;
 
 public class GhostSpawner : MonoBehaviour
 {
     public static GhostSpawner ghostSpawner;
 
+    [Header("Objects")]
     [SerializeField] private GameObject ghostPrefab;
-    [SerializeField] private float defaultSpawnFrequency = 5f;
 
+    [Header("Spawn")]
+    [SerializeField] private float defaultSpawnFrequency = 5f;
     [SerializeField] private float spawnPaddingX;
     [SerializeField] private float spawnPaddingY;
 
+    [Header("Difficulty")]
+    [SerializeField] private float changeInSpawnFrequency;
+    [SerializeField] private float minimumSpawnFrequency;
+    [SerializeField] private int changeDiffilcultyAfterSpawn;
+
+    [Header("Debug")]
     [SerializeField] private bool debug;
 
     private Camera camera;
     private Vector2 screenBotLeft, screenTopRight;
     private float currentTime = 0f;
+
+    private float spawnFrequency;
+    private int currentEnemyNumberSpawned = 0;
 
     private void Awake()
     {
@@ -29,6 +41,8 @@ public class GhostSpawner : MonoBehaviour
     private void Start()
     {
         camera = Camera.main;
+
+        spawnFrequency = defaultSpawnFrequency;
 
         InitCameraBounds();
 
@@ -53,7 +67,7 @@ public class GhostSpawner : MonoBehaviour
         if (currentTime <= 0f)
         {
             SpawnGhostFromRandomPos();
-            // TODO: adjust frequency based on difficulty
+            ChangeDifficulty();
             ResetTimer(defaultSpawnFrequency);
         }
     }
@@ -63,17 +77,37 @@ public class GhostSpawner : MonoBehaviour
         currentTime = newTime;
     }
 
+    private void ChangeDifficulty()
+    {
+        if (currentEnemyNumberSpawned % changeDiffilcultyAfterSpawn == 0)
+        {
+            defaultSpawnFrequency -= changeInSpawnFrequency;
+
+            if (defaultSpawnFrequency < minimumSpawnFrequency)
+                defaultSpawnFrequency = minimumSpawnFrequency;
+
+            if (debug) Debug.Log("Difficulty Changed!");
+        }
+    }
+
     private GameObject SpawnGhostFromRandomPos()
     {
-        float spawnPosX = Random.Range(screenBotLeft.x + spawnPaddingX, screenTopRight.x - spawnPaddingX);
-        float spawnPosY = Random.Range(screenBotLeft.y + spawnPaddingY, screenTopRight.y - spawnPaddingY);
-
-        Vector2 position = new Vector2(spawnPosX, spawnPosY);
+        Vector2 position = RandomPositionOnScreen();
 
         GameObject ghost = Instantiate(ghostPrefab, position, Quaternion.identity, this.gameObject.transform);
+
+        currentEnemyNumberSpawned++;
 
         if (debug) Debug.Log("Ghost Spawned!");
 
         return ghost;
+    }
+    
+    private Vector2 RandomPositionOnScreen()
+    {
+        float spawnPosX = Random.Range(screenBotLeft.x + spawnPaddingX, screenTopRight.x - spawnPaddingX);
+        float spawnPosY = Random.Range(screenBotLeft.y + spawnPaddingY, screenTopRight.y - spawnPaddingY);
+
+        return new Vector2(spawnPosX, spawnPosY);
     }
 }
