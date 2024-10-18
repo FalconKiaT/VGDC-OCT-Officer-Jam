@@ -9,10 +9,13 @@ public class GhostSpawner : MonoBehaviour
     [SerializeField] private GameObject ghostPrefab;
     [SerializeField] private float defaultSpawnFrequency = 5f;
 
+    [SerializeField] private float spawnPaddingX;
+    [SerializeField] private float spawnPaddingY;
+
     [SerializeField] private bool debug;
 
     private Camera camera;
-    private float screenBotLeft, screenTopRight;
+    private Vector2 screenBotLeft, screenTopRight;
     private float currentTime = 0f;
 
     private void Awake()
@@ -39,8 +42,8 @@ public class GhostSpawner : MonoBehaviour
 
     private void InitCameraBounds()
     {
-        Vector3 screenBotLeft = camera.ViewportToWorldPoint(new Vector3(0, 0, camera.nearClipPlane));
-        Vector3 screenTopRight = camera.ViewportToWorldPoint(new Vector3(1, 1, camera.nearClipPlane));
+        screenBotLeft = camera.ViewportToWorldPoint(new Vector3(0, 0, camera.nearClipPlane));
+        screenTopRight = camera.ViewportToWorldPoint(new Vector3(1, 1, camera.nearClipPlane));
     }
 
     private void Timer()
@@ -62,12 +65,14 @@ public class GhostSpawner : MonoBehaviour
 
     private GameObject SpawnGhostFromRandomPos()
     {
-        Vector3 position = Vector3.zero;
+        float spawnPosX = Random.Range(screenBotLeft.x + spawnPaddingX, screenTopRight.x - spawnPaddingX);
+        float spawnPosY = Random.Range(screenBotLeft.y + spawnPaddingY, screenTopRight.y - spawnPaddingY);
+
+        Vector2 position = new Vector2(spawnPosX, spawnPosY);
 
         GameObject ghost = Instantiate(ghostPrefab, position, Quaternion.identity, this.gameObject.transform);
 
-        if (debug)
-            Debug.Log("Ghost Spawned!");
+        if (debug) Debug.Log("Ghost Spawned!");
 
         return ghost;
     }
