@@ -51,7 +51,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a089ec5dcc3b5f047a20e3701e2cb9cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetScale: 5
+  targetScale: 10
   startingScale: 0
   flashColor: {r: 1, g: 0, b: 0, a: 1}
   timeToStartFlashing: 5

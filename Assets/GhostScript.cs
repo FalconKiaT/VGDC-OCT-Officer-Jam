@@ -15,7 +15,7 @@ public class GhostScript : MonoBehaviour
     [SerializeField] private float flashInterval;
 
     [Header("References")]
-    [SerializeField] private Image sr;
+    public Image sr;
 
     // Local Variables
     

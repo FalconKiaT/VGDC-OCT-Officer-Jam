@@ -5,16 +5,16 @@ using UnityEngine;
 
 public class MousePosition : MonoBehaviour
 {
-    [Header("Mouse Transform")]
-    [SerializeField] private float speed;
-    [SerializeField] Vector3 offset;
+    // Local fields
+    private RectTransform rect;
+
+    private void Start()
+    {
+        rect = GetComponent<RectTransform>();   
+    }
 
     void Update()
     {
-        // Get the mouse position from Event.
-        // Note that the y position from Event is inverted.
-        Vector3 mousePos = Input.mousePosition;
-        mousePos.z = speed;
-        transform.position = Camera.main.ScreenToWorldPoint(mousePos) + offset;
+        rect.position = Input.mousePosition;
     }
 }

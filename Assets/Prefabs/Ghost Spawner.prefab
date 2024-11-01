@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &716822282374612312
+--- !u!1 &8664107464960059661
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,23 +8,22 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 8594488409376332962}
-  - component: {fileID: 2821535901120784011}
-  m_Layer: 0
+  - component: {fileID: 8224028615039655772}
+  - component: {fileID: 5621962332734617976}
+  m_Layer: 5
   m_Name: Ghost Spawner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &8594488409376332962
-Transform:
+--- !u!224 &8224028615039655772
+RectTransform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 716822282374612312}
-  serializedVersion: 2
+  m_GameObject: {fileID: 8664107464960059661}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -32,19 +31,34 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2821535901120784011
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &5621962332734617976
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 716822282374612312}
+  m_GameObject: {fileID: 8664107464960059661}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ff026b7d0ed68ee4f802e2f38f468f9d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ghostPrefab: {fileID: 4494829325265969574, guid: 007084c5f4e361249b428fa0e3e3267d, type: 3}
+  localTransform: {fileID: 8224028615039655772}
+  ghostImageVariants:
+  - {fileID: 21300000, guid: 2a676b829cf21544f969ed91f6ec996f, type: 3}
+  - {fileID: 21300000, guid: 12a9cd05eb3371941a81c5ebf1510db8, type: 3}
+  - {fileID: 21300000, guid: dd8ed891e59dfff4f834fb9eb856cc6f, type: 3}
+  - {fileID: 21300000, guid: b3d974c0ca6a8764e81135327fb8341a, type: 3}
+  - {fileID: 21300000, guid: a22bebeedc41b5849ac0e0bb2ddcb709, type: 3}
+  - {fileID: 21300000, guid: ef3a15b5483dfa14fa67837455e390d9, type: 3}
+  - {fileID: 21300000, guid: d008cfde289d2e54b8c522fdbb397480, type: 3}
+  ghostPrefab: {fileID: 828618203634740337, guid: 17c44b8aa2eac374988eb02c2467513a, type: 3}
+  canvasRect: {fileID: 0}
   defaultSpawnFrequency: 5
   spawnPaddingX: 0.1
   spawnPaddingY: 0.1
