@@ -13,6 +13,7 @@ public class GhostSpawner : MonoBehaviour
     [SerializeField] private List<Sprite> ghostImageVariants;
     [SerializeField] private GameObject ghostPrefab;
     [SerializeField] private RectTransform canvasRect;
+    [SerializeField] private HandleDeath handleDeathScript;
 
     [Header("Spawn")]
     [SerializeField] private float defaultSpawnFrequency = 5f;
@@ -116,6 +117,9 @@ public class GhostSpawner : MonoBehaviour
             // Set the sprite
             spriteRenderer.sprite = randomImage;
         }
+
+        GhostScript ghostScript = spawnedObject.GetComponent<GhostScript>();
+        ghostScript.handleDeathScript = handleDeathScript;
 
         currentEnemyNumberSpawned++;
 

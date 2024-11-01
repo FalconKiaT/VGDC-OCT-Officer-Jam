@@ -13,6 +13,7 @@ public class GhostScript : MonoBehaviour
     [SerializeField] private float timeToStartFlashing;
     [SerializeField] private float timeToKillPlayer;
     [SerializeField] private float flashInterval;
+    public HandleDeath handleDeathScript;
 
     [Header("References")]
     public Image sr;
@@ -61,6 +62,7 @@ public class GhostScript : MonoBehaviour
             yield return null;
         }
 
+        handleDeathScript.Jumpscare();
         KillGhost();
     }
 
@@ -88,7 +90,7 @@ public class GhostScript : MonoBehaviour
     public void PlayerClickedGhost()
     {
         // Add score
-        ScoreManager.instance.score += 1;
+        ScoreManager.score += 1;
         // Kill ghost
         KillGhost();
     }
